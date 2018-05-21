@@ -141,8 +141,8 @@ public class ValidateADNService {
         JSONObject json = new JSONObject();
         Long cuentaMutantes = secuenciaADNRepository.cuentaMutantes();
         Long cuentaHumanos = secuenciaADNRepository.cuentaHumanos();
-        json.put("count_mutant_dna", secuenciaADNRepository.cuentaMutantes());
-        json.put("count_human_dna", secuenciaADNRepository.cuentaHumanos());
+        json.put("count_mutant_dna", cuentaMutantes);
+        json.put("count_human_dna", cuentaHumanos);
         if(cuentaHumanos>0){
             DecimalFormat df = new DecimalFormat();
             df.setMaximumFractionDigits(1);
