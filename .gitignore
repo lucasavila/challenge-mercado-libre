@@ -1,0 +1,9 @@
+.idea/
+build.gradle
+build/
+gradle/
+gradlew
+gradle.bat
+gradlew.bat
+settings.gradle
+Magneto.iml
