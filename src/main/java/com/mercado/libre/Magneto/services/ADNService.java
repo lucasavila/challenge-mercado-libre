@@ -14,9 +14,14 @@ public class ADNService{
     @Autowired
     private SecuenciaADNRepository secuenciaADNRepository;
 
+    @Autowired
+    private SecuenciaActorService secuenciaActorService;
+
     public void save(SecuenciaADN secuenciaADN, Boolean esMutante){
         secuenciaADN.setEsMutante(esMutante);
-        secuenciaADNRepository.save(secuenciaADN);
+//        secuenciaADNRepository.save(secuenciaADN);
+        secuenciaActorService.saveMessage(secuenciaADN, secuenciaADNRepository);
+
     }
 
     public String getStats(){

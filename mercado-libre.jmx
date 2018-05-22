@@ -33,13 +33,12 @@
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
 &quot;dna&quot;:[&#xd;
-      &quot;ATGCGA&quot;,&#xd;
-      &quot;CAGTGC&quot;,&#xd;
-      &quot;TTATGT&quot;,&#xd;
-      &quot;AGAAGG&quot;,&#xd;
-      &quot;CCCCTA&quot;,&#xd;
-      &quot;TCACTG&quot;&#xd;
-	]&#xd;
+	&quot;ATGCGA&quot;,&#xd;
+	&quot;CAGTSC&quot;,&#xd;
+	&quot;TTATGT&quot;,&#xd;
+	&quot;AGAAGG&quot;,&#xd;
+	&quot;CCSCTA&quot;,&#xd;
+	&quot;TCACTG&quot;]&#xd;
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
