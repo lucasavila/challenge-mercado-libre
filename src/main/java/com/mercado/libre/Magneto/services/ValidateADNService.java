@@ -1,24 +1,11 @@
 package com.mercado.libre.Magneto.services;
 
-import com.mercado.libre.Magneto.dominio.SecuenciaADN;
 import com.mercado.libre.Magneto.repositories.SecuenciaADNRepository;
-import org.json.JSONArray;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.text.DecimalFormat;
-import java.util.regex.Pattern;
-
 @Service
 public class ValidateADNService {
-
-    @Autowired
-    private SecuenciaADNRepository secuenciaADNRepository;
-
-    public void save(String[] array, Boolean esMutante){
-        secuenciaADNRepository.save(new SecuenciaADN(array, esMutante));
-    }
 
     public Boolean isMutant(String[] dna){
 
@@ -90,9 +77,6 @@ public class ValidateADNService {
         return 0L;
     }
 
-
-
-
     private String [][] getMatriz(String[] dna){
         String [][] matriz= new String[dna.length][dna.length];
         for(int i = 0; i< dna.length;i++){
@@ -100,56 +84,5 @@ public class ValidateADNService {
             matriz[i] = linea;
         }
         return matriz;
-    }
-
-    public String [] getArray(JSONArray jsonArray){
-
-        String [] result = new String[jsonArray.length()];
-
-        for(int i=0;i<jsonArray.length();i++){
-            result[i] = jsonArray.getString(i);
-        }
-        return result;
-    }
-
-    public JSONArray getJSON(String json){
-        JSONArray arrayADN = null;
-        try {
-            arrayADN = new JSONObject(json).getJSONArray("dna");
-        }
-        catch (Exception e){
-            e.getMessage();
-        }
-        return arrayADN;
-    }
-
-    public Boolean adnIncorrecto(JSONArray array){
-        int i = 0;
-        Boolean invalido = false;
-        while(i < array.length() && invalido == false){
-            invalido = lineaInvalida(array.getString(i++).toLowerCase());
-            i++;
-        }
-        return invalido;
-    }
-
-    private Boolean lineaInvalida(String line){
-        return !Pattern.compile("[a|t|c|g]+").matcher(line).matches();
-    }
-
-    public String getStats(){
-        JSONObject json = new JSONObject();
-        Long cuentaMutantes = secuenciaADNRepository.cuentaMutantes();
-        Long cuentaHumanos = secuenciaADNRepository.cuentaHumanos();
-        json.put("count_mutant_dna", cuentaMutantes);
-        json.put("count_human_dna", cuentaHumanos);
-        if(cuentaHumanos>0){
-            DecimalFormat df = new DecimalFormat();
-            df.setMaximumFractionDigits(1);
-            Float ratio = cuentaMutantes.floatValue()/cuentaHumanos.floatValue();
-            json.put("ratio",df.format(ratio));
-        }
-        return json.toString();
-
     }
 }
