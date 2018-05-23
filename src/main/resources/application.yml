@@ -25,7 +25,7 @@ spring:
     jpa:
           daqtabase-platform: org.hibernate.dialect.PostgreSQL94Dialect
     datasource:
-          url: 'jdbc:postgresql://localhost:5432/magneto'
+#          url: 'jdbc:postgresql://localhost:5432/magneto'
           driver-class-name: 'org.postgresql.Driver'
           username: 'root'
           password: 'root'
