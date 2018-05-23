@@ -38,5 +38,5 @@ spring:
           autoReconnectForPools: true
           is-connection-validation-required: true
 hibernate:
-    hbm2ddlAuto: 'update'
-    showSql: true
+  hbm2ddlAuto: 'create'
+  showSql: true
