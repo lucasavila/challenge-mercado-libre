@@ -1,6 +1,7 @@
 package com.mercado.libre.Magneto.controllers;
 
 import com.mercado.libre.Magneto.dominio.SecuenciaADN;
+import com.mercado.libre.Magneto.exceptions.ADNIncorrectoException;
 import com.mercado.libre.Magneto.exceptions.NoMutanteException;
 import com.mercado.libre.Magneto.services.IADNService;
 import com.mercado.libre.Magneto.services.IValidateADNService;
@@ -26,7 +27,7 @@ public class ADNController{
 
         String[] array = secuenciaADN.getDna();
         if(validateADNService.adnIncorrecto(array)){
-            throw new Exception("ADN Incorrecto");
+            throw new ADNIncorrectoException("ADN Incorrecto");
         }
         Boolean esMutante = validateADNService.isMutant(array);
         adnService.save(secuenciaADN, esMutante);

@@ -1,6 +1,6 @@
 # CHALLENGE-MERCADOLIBRE
 
-#Para poder ejecutar la aplicación se debe tener instalado DOCKER preferentemente versiones recientes como la 18.02
+# Para poder ejecutar la aplicación se debe tener instalado DOCKER preferentemente versiones recientes como la 18.02
 
 # ejecutando el comando "bash runApp.sh" 
 
@@ -10,8 +10,7 @@
 
 # El código fuente de github es: https://github.com/lucasavila/challenge-mercado-libre
 
-# Esta aplicación se encuentra implementada en el host: https://challenge-mercadolibre.herokuapp.com/
+# Esta aplicación se encuentra implementada en el host: https://challenge-mercadolibre.herokuapp.com/ de Cloud Application Platform | Heroku https://www.heroku.com/
 
-
-
+# La DB Postgres cuenta con 10000 registros para su versión free.
 
