@@ -2,9 +2,8 @@ package com.mercado.libre.Magneto.controllers;
 
 import com.mercado.libre.Magneto.dominio.SecuenciaADN;
 import com.mercado.libre.Magneto.exceptions.NoMutanteException;
-import com.mercado.libre.Magneto.services.ADNService;
-import com.mercado.libre.Magneto.services.ValidateADNService;
-import org.json.JSONObject;
+import com.mercado.libre.Magneto.services.IADNService;
+import com.mercado.libre.Magneto.services.IValidateADNService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,15 +16,18 @@ import org.springframework.web.bind.annotation.RestController;
 public class ADNController{
 
     @Autowired
-    private ValidateADNService validateADNService;
+    private IValidateADNService validateADNService;
 
     @Autowired
-    private ADNService adnService;
+    private IADNService adnService;
 
     @RequestMapping(value = "/mutant", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
     public String isMutant(@RequestBody SecuenciaADN secuenciaADN) throws Exception {
 
         String[] array = secuenciaADN.getDna();
+        if(validateADNService.adnIncorrecto(array)){
+            throw new Exception("ADN Incorrecto");
+        }
         Boolean esMutante = validateADNService.isMutant(array);
         adnService.save(secuenciaADN, esMutante);
 

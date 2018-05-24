@@ -1,7 +1,8 @@
-package com.mercado.libre.Magneto.services;
+package com.mercado.libre.Magneto.services.impl;
 
 import com.mercado.libre.Magneto.dominio.SecuenciaADN;
 import com.mercado.libre.Magneto.repositories.SecuenciaADNRepository;
+import com.mercado.libre.Magneto.services.IADNService;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.text.DecimalFormat;
 
 @Service
-public class ADNService{
+public class ADNServiceImpl implements IADNService {
 
     @Autowired
     private SecuenciaADNRepository secuenciaADNRepository;

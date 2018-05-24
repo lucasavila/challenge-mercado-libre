@@ -1,0 +1,10 @@
+spring:
+    profiles: default
+
+    datasource:
+          url: 'jdbc:h2:mem:myDb;DB_CLOSE_ON_EXIT=FALSE'
+          driver-class-name: 'org.h2.Driver'
+
+hibernate:
+  hbm2ddlAuto: 'create-drop'
+  showSql: true

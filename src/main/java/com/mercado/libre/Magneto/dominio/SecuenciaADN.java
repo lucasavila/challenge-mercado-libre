@@ -18,10 +18,6 @@ public class SecuenciaADN{
     }
     public SecuenciaADN() {}
 
-    public SecuenciaADN(Boolean esMutante) {
-        this.esMutante = esMutante;
-    }
-
     public String[] getDna() {
         return dna;
     }

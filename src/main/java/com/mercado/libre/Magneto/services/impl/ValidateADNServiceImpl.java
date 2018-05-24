@@ -1,11 +1,14 @@
-package com.mercado.libre.Magneto.services;
+package com.mercado.libre.Magneto.services.impl;
 
 import com.mercado.libre.Magneto.repositories.SecuenciaADNRepository;
+import com.mercado.libre.Magneto.services.IValidateADNService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.regex.Pattern;
+
 @Service
-public class ValidateADNService {
+public class ValidateADNServiceImpl implements IValidateADNService {
 
     public Boolean isMutant(String[] dna){
 
@@ -84,5 +87,19 @@ public class ValidateADNService {
             matriz[i] = linea;
         }
         return matriz;
+    }
+
+    public Boolean adnIncorrecto(String[] array){
+        int i = 0;
+        Boolean invalido = false;
+        while(i < array.length && invalido == false){
+            invalido = lineaInvalida(array[i++].toLowerCase());
+            i++;
+        }
+        return invalido;
+    }
+
+    private Boolean lineaInvalida(String line){
+        return !Pattern.compile("[a|t|c|g]+").matcher(line).matches();
     }
 }
