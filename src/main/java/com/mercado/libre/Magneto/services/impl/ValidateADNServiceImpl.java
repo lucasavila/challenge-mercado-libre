@@ -57,7 +57,7 @@ public class ValidateADNServiceImpl implements IValidateADNService {
      * @param i columna
      * @param j fila
      * @return Integer
-     * Calcula si tiene 2 o mas lineas de ADN retorna verdadero sino es falso
+     * calcula en diagonal la linea de abajo e izquierda hacia arriba a la derecha
      * */
     private Integer calculoDiagonalAsc(String[][] matriz, int i, int j){
         if(0<=(j-3) && matriz.length>(i+3) && matriz[j][i].equals(matriz [j-1][i+1])
@@ -67,7 +67,13 @@ public class ValidateADNServiceImpl implements IValidateADNService {
         }
         return 0;
     }
-
+    /**
+     * @param matriz: Matriz de Strings
+     * @param i columna
+     * @param j fila
+     * @return Integer
+     * calcula la linea de izquierda a derecha
+     * */
     private Integer calculoFila(String[][] matriz, int i, int j){
         if(matriz.length>(i+3) && matriz[j][i].equals(matriz [j][i+1])
                 && matriz[j][i].equals(matriz [j][i+2])
@@ -77,6 +83,13 @@ public class ValidateADNServiceImpl implements IValidateADNService {
         return 0;
     }
 
+    /**
+     * @param matriz: Matriz de Strings
+     * @param i columna
+     * @param j fila
+     * @return Integer
+     * calcula en diagonal la linea de arriba e izquierda hacia abajo a la derecha
+     * */
     private Integer calculoDiagonalDesc(String[][] matriz, int i, int j){
         if(matriz.length>(j+3) && matriz.length>(i+3) && matriz[j][i].equals(matriz [j+1][i+1])
                 && matriz[j][i].equals(matriz [j+2][i+2])
@@ -85,7 +98,13 @@ public class ValidateADNServiceImpl implements IValidateADNService {
         }
         return 0;
     }
-
+    /**
+     * @param matriz: Matriz de Strings
+     * @param i fila
+     * @param j columna
+     * @return Integer
+     * calcula la linea de arriba hacia abajo
+     * */
     private Integer calculoColumna(String[][] matriz, int i, int j){
         if(matriz.length>(i+3) && matriz[i][j].equals(matriz [i+1][j])
                 && matriz[i][j].equals(matriz [i+2][j])
@@ -104,6 +123,11 @@ public class ValidateADNServiceImpl implements IValidateADNService {
         return matriz;
     }
 
+    /**
+     * @param array: Array de Strings
+     * @return Boolean
+     * itera las lineas del array y llama al metodo lineaInvalida
+     * */
     public Boolean adnIncorrecto(String[] array){
         int i = 0;
         Boolean invalido = false;
@@ -112,8 +136,12 @@ public class ValidateADNServiceImpl implements IValidateADNService {
         }
         return invalido;
     }
-
-    private Boolean lineaInvalida(String line){
-        return !Pattern.compile("[a|t|c|g]+").matcher(line).matches();
+    /**
+     * @param linea: String
+     * @return Boolean
+     * Regex que determina si el valor del ADN es correcto o incorrecto
+     * */
+    private Boolean lineaInvalida(String linea){
+        return !Pattern.compile("[a|t|c|g]+").matcher(linea).matches();
     }
 }
