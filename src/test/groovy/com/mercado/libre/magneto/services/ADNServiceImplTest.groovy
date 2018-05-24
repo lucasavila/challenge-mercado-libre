@@ -58,11 +58,13 @@ public class ADNServiceImplTest extends Specification{
             def secuenciaADNRepository = Mock(SecuenciaADNRepository)
             adnService.secuenciaADNRepository = secuenciaADNRepository
             SecuenciaADN secuenciaADN = new SecuenciaADN();
-            Boolean esMutante = false;
+            def secuenciaActorService = Mock(ISecuenciaActorService)
+            adnService.secuenciaActorService = secuenciaActorService
+            Boolean esMutante = true
         when:
-            adnService.save(secuenciaADN,esMutante)
+            adnService.save(secuenciaADN, esMutante)
         then:
-            1 * adnService.secuenciaADNRepository.save(_) >> 1L
+            1 * adnService.secuenciaActorService.saveMessage(_, _) >> "OK"
             true == true
 
     }

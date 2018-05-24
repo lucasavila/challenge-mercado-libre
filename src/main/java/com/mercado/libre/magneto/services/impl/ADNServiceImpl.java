@@ -3,6 +3,7 @@ package com.mercado.libre.magneto.services.impl;
 import com.mercado.libre.magneto.dominio.SecuenciaADN;
 import com.mercado.libre.magneto.repositories.SecuenciaADNRepository;
 import com.mercado.libre.magneto.services.IADNService;
+import com.mercado.libre.magneto.services.ISecuenciaActorService;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,9 @@ public class ADNServiceImpl implements IADNService {
     @Autowired
     private SecuenciaADNRepository secuenciaADNRepository;
 
+    @Autowired
+    private ISecuenciaActorService secuenciaActorService;
+
     /**
      * @param secuenciaADN: objeto que tiene la secuencia recibida del request
      * @param esMutante: Boolean que identifica si es o no mutante
@@ -23,7 +27,7 @@ public class ADNServiceImpl implements IADNService {
      * */
     public void save(SecuenciaADN secuenciaADN, Boolean esMutante){
         secuenciaADN.setEsMutante(esMutante);
-        secuenciaADNRepository.save(secuenciaADN);
+        secuenciaActorService.saveMessage(secuenciaADN, secuenciaADNRepository);
     }
 
     /**
