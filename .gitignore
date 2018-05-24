@@ -1,8 +1,8 @@
 .idea/
 build/
-gradle/
-gradlew
-gradle.bat
-gradlew.bat
-settings.gradle
+#gradle/
+#gradlew
+#gradle.bat
+#gradlew.bat
+#settings.gradle
 Magneto.iml
