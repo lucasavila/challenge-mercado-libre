@@ -113,7 +113,11 @@ public class ValidateADNServiceImpl implements IValidateADNService {
         }
         return 0;
     }
-
+    /**
+     * @param dna: Array de Strings
+     * @return String[][]: matriz de Strings
+     * se recorre el array y se genera una matriz para facilitar su manipulación
+     * */
     private String [][] getMatriz(String[] dna){
         String [][] matriz= new String[dna.length][dna.length];
         for(int i = 0; i< dna.length;i++){
