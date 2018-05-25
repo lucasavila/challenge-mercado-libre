@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Service
-class SecuenciaActorServiceImpl extends ActorService<SecuenciaMessageActor> implements ISecuenciaActorService {
+public class SecuenciaActorServiceImpl extends ActorService<SecuenciaMessageActor> implements ISecuenciaActorService {
 
     SecuenciaActorServiceImpl() {
         super(SecuenciaMessageActor.class);
